@@ -368,7 +368,7 @@ Or add validation with a drop down.
       'C2:C7',
       ValidationConditionType.one_of_list,
       ['Yes',
-      'No',]
+      'No'],
       showCustomUi=True
    )
 
