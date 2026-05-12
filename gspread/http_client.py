@@ -115,7 +115,7 @@ class HTTPClient:
         response = self.session.request(
             method=method,
             url=endpoint,
-            json=json,
+            json=dict(json) if json else None,
             params=params,
             data=data,
             files=files,
