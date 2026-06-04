@@ -59,6 +59,20 @@ class SpreadsheetTest(GspreadTest):
         self.assertIsInstance(sheet, gspread.Worksheet)
 
     @pytest.mark.vcr()
+    def test_get_all_worksheet_values(self):
+        result = self.spreadsheet.get_all_worksheet_values()
+        skip_result = self.spreadsheet.get_all_worksheet_values(
+            skip_worksheet_titles=["Sheet1"]
+        )
+        self.assertIsInstance(result, dict)
+        self.assertEqual(list(result.keys()), ["Sheet1", "Sheet 2"])
+        self.assertEqual(result["Sheet1"], [["a", "b"], ["c", "d"]])
+        self.assertEqual(result["Sheet 2"], [["1", "2"]])
+        self.assertIsInstance(skip_result, dict)
+        self.assertEqual(list(skip_result.keys()), ["Sheet 2"])
+        self.assertEqual(skip_result["Sheet 2"], [["1", "2"]])
+
+    @pytest.mark.vcr()
     def test_worksheets(self):
         n_worksheets_before = len(self.spreadsheet.worksheets())
 

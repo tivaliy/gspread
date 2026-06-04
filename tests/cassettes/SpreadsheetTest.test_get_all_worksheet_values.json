@@ -1,0 +1,186 @@
+{
+    "version": 1,
+    "interactions": [
+        {
+            "request": {
+                "method": "POST",
+                "uri": "https://www.googleapis.com/drive/v3/files?supportsAllDrives=True",
+                "body": "{\"name\": \"Test SpreadsheetTest test_get_all_worksheet_values\", \"mimeType\": \"application/vnd.google-apps.spreadsheet\"}",
+                "headers": {
+                    "User-Agent": ["python-requests/2.31.0"],
+                    "Accept-Encoding": ["gzip, deflate"],
+                    "Accept": ["*/*"],
+                    "Connection": ["keep-alive"],
+                    "x-goog-api-client": ["cred-type/sa"],
+                    "x-identity-trust-boundary": ["0"],
+                    "Content-Length": ["117"],
+                    "Content-Type": ["application/json"],
+                    "authorization": ["<ACCESS_TOKEN>"]
+                }
+            },
+            "response": {
+                "status": {"code": 200, "message": "OK"},
+                "headers": {
+                    "Content-Type": ["application/json; charset=UTF-8"],
+                    "content-length": ["200"]
+                },
+                "body": {
+                    "string": "{\n  \"kind\": \"drive#file\",\n  \"id\": \"fake_id_get_all_worksheet_values\",\n  \"name\": \"Test SpreadsheetTest test_get_all_worksheet_values\",\n  \"mimeType\": \"application/vnd.google-apps.spreadsheet\"\n}\n"
+                }
+            }
+        },
+        {
+            "request": {
+                "method": "GET",
+                "uri": "https://sheets.googleapis.com/v4/spreadsheets/fake_id_get_all_worksheet_values?includeGridData=false",
+                "body": null,
+                "headers": {
+                    "User-Agent": ["python-requests/2.31.0"],
+                    "Accept-Encoding": ["gzip, deflate"],
+                    "Accept": ["*/*"],
+                    "Connection": ["keep-alive"],
+                    "x-goog-api-client": ["cred-type/sa"],
+                    "x-identity-trust-boundary": ["0"],
+                    "authorization": ["<ACCESS_TOKEN>"]
+                }
+            },
+            "response": {
+                "status": {"code": 200, "message": "OK"},
+                "headers": {
+                    "Content-Type": ["application/json; charset=UTF-8"],
+                    "content-length": ["600"]
+                },
+                "body": {
+                    "string": "{\n  \"spreadsheetId\": \"fake_id_get_all_worksheet_values\",\n  \"properties\": {\n    \"title\": \"Test SpreadsheetTest test_get_all_worksheet_values\",\n    \"locale\": \"en_US\",\n    \"autoRecalc\": \"ON_CHANGE\",\n    \"timeZone\": \"Etc/GMT\",\n    \"defaultFormat\": {}\n  },\n  \"sheets\": [\n    {\n      \"properties\": {\n        \"sheetId\": 0,\n        \"title\": \"Sheet1\",\n        \"index\": 0,\n        \"sheetType\": \"GRID\",\n        \"gridProperties\": {\"rowCount\": 1000, \"columnCount\": 26}\n      }\n    },\n    {\n      \"properties\": {\n        \"sheetId\": 1,\n        \"title\": \"Sheet 2\",\n        \"index\": 1,\n        \"sheetType\": \"GRID\",\n        \"gridProperties\": {\"rowCount\": 1000, \"columnCount\": 26}\n      }\n    }\n  ],\n  \"spreadsheetUrl\": \"https://docs.google.com/spreadsheets/d/fake_id_get_all_worksheet_values/edit\"\n}\n"
+                }
+            }
+        },
+        {
+            "request": {
+                "method": "GET",
+                "uri": "https://sheets.googleapis.com/v4/spreadsheets/fake_id_get_all_worksheet_values?includeGridData=false",
+                "body": null,
+                "headers": {
+                    "User-Agent": ["python-requests/2.31.0"],
+                    "Accept-Encoding": ["gzip, deflate"],
+                    "Accept": ["*/*"],
+                    "Connection": ["keep-alive"],
+                    "x-goog-api-client": ["cred-type/sa"],
+                    "x-identity-trust-boundary": ["0"],
+                    "authorization": ["<ACCESS_TOKEN>"]
+                }
+            },
+            "response": {
+                "status": {"code": 200, "message": "OK"},
+                "headers": {
+                    "Content-Type": ["application/json; charset=UTF-8"],
+                    "content-length": ["600"]
+                },
+                "body": {
+                    "string": "{\n  \"spreadsheetId\": \"fake_id_get_all_worksheet_values\",\n  \"properties\": {\n    \"title\": \"Test SpreadsheetTest test_get_all_worksheet_values\",\n    \"locale\": \"en_US\",\n    \"autoRecalc\": \"ON_CHANGE\",\n    \"timeZone\": \"Etc/GMT\",\n    \"defaultFormat\": {}\n  },\n  \"sheets\": [\n    {\n      \"properties\": {\n        \"sheetId\": 0,\n        \"title\": \"Sheet1\",\n        \"index\": 0,\n        \"sheetType\": \"GRID\",\n        \"gridProperties\": {\"rowCount\": 1000, \"columnCount\": 26}\n      }\n    },\n    {\n      \"properties\": {\n        \"sheetId\": 1,\n        \"title\": \"Sheet 2\",\n        \"index\": 1,\n        \"sheetType\": \"GRID\",\n        \"gridProperties\": {\"rowCount\": 1000, \"columnCount\": 26}\n      }\n    }\n  ],\n  \"spreadsheetUrl\": \"https://docs.google.com/spreadsheets/d/fake_id_get_all_worksheet_values/edit\"\n}\n"
+                }
+            }
+        },
+        {
+            "request": {
+                "method": "GET",
+                "uri": "https://sheets.googleapis.com/v4/spreadsheets/fake_id_get_all_worksheet_values/values:batchGet?ranges=%27Sheet1%27&ranges=%27Sheet+2%27",
+                "body": null,
+                "headers": {
+                    "User-Agent": ["python-requests/2.31.0"],
+                    "Accept-Encoding": ["gzip, deflate"],
+                    "Accept": ["*/*"],
+                    "Connection": ["keep-alive"],
+                    "x-goog-api-client": ["cred-type/sa"],
+                    "x-identity-trust-boundary": ["0"],
+                    "authorization": ["<ACCESS_TOKEN>"]
+                }
+            },
+            "response": {
+                "status": {"code": 200, "message": "OK"},
+                "headers": {
+                    "Content-Type": ["application/json; charset=UTF-8"],
+                    "content-length": ["300"]
+                },
+                "body": {
+                    "string": "{\n  \"spreadsheetId\": \"fake_id_get_all_worksheet_values\",\n  \"valueRanges\": [\n    {\n      \"range\": \"Sheet1!A1:B2\",\n      \"majorDimension\": \"ROWS\",\n      \"values\": [[\"a\", \"b\"], [\"c\", \"d\"]]\n    },\n    {\n      \"range\": \"'Sheet 2'!A1:B1\",\n      \"majorDimension\": \"ROWS\",\n      \"values\": [[\"1\", \"2\"]]\n    }\n  ]\n}\n"
+                }
+            }
+        },
+        {
+            "request": {
+                "method": "GET",
+                "uri": "https://sheets.googleapis.com/v4/spreadsheets/fake_id_get_all_worksheet_values?includeGridData=false",
+                "body": null,
+                "headers": {
+                    "User-Agent": ["python-requests/2.31.0"],
+                    "Accept-Encoding": ["gzip, deflate"],
+                    "Accept": ["*/*"],
+                    "Connection": ["keep-alive"],
+                    "x-goog-api-client": ["cred-type/sa"],
+                    "x-identity-trust-boundary": ["0"],
+                    "authorization": ["<ACCESS_TOKEN>"]
+                }
+            },
+            "response": {
+                "status": {"code": 200, "message": "OK"},
+                "headers": {
+                    "Content-Type": ["application/json; charset=UTF-8"],
+                    "content-length": ["600"]
+                },
+                "body": {
+                    "string": "{\n  \"spreadsheetId\": \"fake_id_get_all_worksheet_values\",\n  \"properties\": {\n    \"title\": \"Test SpreadsheetTest test_get_all_worksheet_values\",\n    \"locale\": \"en_US\",\n    \"autoRecalc\": \"ON_CHANGE\",\n    \"timeZone\": \"Etc/GMT\",\n    \"defaultFormat\": {}\n  },\n  \"sheets\": [\n    {\n      \"properties\": {\n        \"sheetId\": 0,\n        \"title\": \"Sheet1\",\n        \"index\": 0,\n        \"sheetType\": \"GRID\",\n        \"gridProperties\": {\"rowCount\": 1000, \"columnCount\": 26}\n      }\n    },\n    {\n      \"properties\": {\n        \"sheetId\": 1,\n        \"title\": \"Sheet 2\",\n        \"index\": 1,\n        \"sheetType\": \"GRID\",\n        \"gridProperties\": {\"rowCount\": 1000, \"columnCount\": 26}\n      }\n    }\n  ],\n  \"spreadsheetUrl\": \"https://docs.google.com/spreadsheets/d/fake_id_get_all_worksheet_values/edit\"\n}\n"
+                }
+            }
+        },
+        {
+            "request": {
+                "method": "GET",
+                "uri": "https://sheets.googleapis.com/v4/spreadsheets/fake_id_get_all_worksheet_values/values:batchGet?ranges=%27Sheet+2%27",
+                "body": null,
+                "headers": {
+                    "User-Agent": ["python-requests/2.31.0"],
+                    "Accept-Encoding": ["gzip, deflate"],
+                    "Accept": ["*/*"],
+                    "Connection": ["keep-alive"],
+                    "x-goog-api-client": ["cred-type/sa"],
+                    "x-identity-trust-boundary": ["0"],
+                    "authorization": ["<ACCESS_TOKEN>"]
+                }
+            },
+            "response": {
+                "status": {"code": 200, "message": "OK"},
+                "headers": {
+                    "Content-Type": ["application/json; charset=UTF-8"],
+                    "content-length": ["200"]
+                },
+                "body": {
+                    "string": "{\n  \"spreadsheetId\": \"fake_id_get_all_worksheet_values\",\n  \"valueRanges\": [\n    {\n      \"range\": \"'Sheet 2'!A1:B1\",\n      \"majorDimension\": \"ROWS\",\n      \"values\": [[\"1\", \"2\"]]\n    }\n  ]\n}\n"
+                }
+            }
+        },
+        {
+            "request": {
+                "method": "DELETE",
+                "uri": "https://www.googleapis.com/drive/v3/files/fake_id_get_all_worksheet_values?supportsAllDrives=True",
+                "body": null,
+                "headers": {
+                    "User-Agent": ["python-requests/2.31.0"],
+                    "Accept-Encoding": ["gzip, deflate"],
+                    "Accept": ["*/*"],
+                    "Connection": ["keep-alive"],
+                    "Content-Length": ["0"],
+                    "authorization": ["<ACCESS_TOKEN>"]
+                }
+            },
+            "response": {
+                "status": {"code": 204, "message": "No Content"},
+                "headers": {
+                    "Content-Type": ["text/html"],
+                    "Content-Length": ["0"]
+                },
+                "body": {"string": ""}
+            }
+        }
+    ]
+}
