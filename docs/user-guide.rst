@@ -248,6 +248,23 @@ Alternatively, use ``gspread.utils.to_records()`` for more control over headers:
        # {'fruit': 'banana', 'alternate name': 'yellow stick', 'tastiness': 'quite'}
 
 
+Getting All Values From Every Worksheet at Once
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+Using ``get_all_worksheet_values()`` (fetches every worksheet in a single API call):
+
+.. code:: python
+
+   all_values = spreadsheet.get_all_worksheet_values()
+   # {'Sheet1': [['a', 'b'], ['c', 'd']], 'Sheet 2': [['1', '2']]}
+
+Optionally, pass ``skip_worksheet_titles`` to leave out worksheets you don't need:
+
+.. code:: python
+
+   all_values = spreadsheet.get_all_worksheet_values(skip_worksheet_titles=["Sheet1"])
+
+
 Loading Worksheet Data into a DataFrame
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 

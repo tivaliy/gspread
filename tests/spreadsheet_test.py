@@ -60,6 +60,11 @@ class SpreadsheetTest(GspreadTest):
 
     @pytest.mark.vcr()
     def test_get_all_worksheet_values(self):
+        sheet1 = self.spreadsheet.sheet1
+        sheet1.update([["a", "b"], ["c", "d"]], "A1:B2")
+        self.spreadsheet.add_worksheet(title="Sheet 2", rows=10, cols=10).update(
+            [["1", "2"]], "A1:B1"
+        )
         result = self.spreadsheet.get_all_worksheet_values()
         skip_result = self.spreadsheet.get_all_worksheet_values(
             skip_worksheet_titles=["Sheet1"]
