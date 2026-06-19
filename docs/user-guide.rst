@@ -361,6 +361,23 @@ Update a range
    worksheet.update([[1, 2], [3, 4]], 'A1:B2')
 
 
+Using a Custom JSON Serializer
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+By default gspread serializes request bodies with the standard library
+``json`` module, which cannot encode some types such as ``datetime`` or
+``Decimal``. You can register a custom serializer to handle them.
+
+.. code:: python
+
+   import json
+
+   gc.set_serializer(lambda body: json.dumps(body, default=str))
+
+The serializer is any callable with the same signature as ``json.dumps``.
+Pass ``None`` to restore the default behavior.
+
+
 Adding Data Validation
 ~~~~~~~~~~~~~~~~~~~~~~
 

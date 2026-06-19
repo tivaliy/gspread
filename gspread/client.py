@@ -14,7 +14,7 @@ from google.auth.credentials import Credentials
 from requests import Response, Session
 
 from .exceptions import APIError, SpreadsheetNotFound
-from .http_client import HTTPClient, HTTPClientType, ParamsType
+from .http_client import HTTPClient, HTTPClientType, ParamsType, SerializerType
 from .spreadsheet import Spreadsheet
 from .urls import DRIVE_FILES_API_V3_COMMENTS_URL, DRIVE_FILES_API_V3_URL
 from .utils import ExportFormat, MimeType, extract_id_from_url, finditem
@@ -64,6 +64,18 @@ class Client:
         Value for ``timeout`` is in seconds (s).
         """
         self.http_client.set_timeout(timeout)
+
+    def set_serializer(self, serializer: SerializerType = None) -> None:
+        """Set a custom JSON serializer used to encode request bodies.
+
+        See :meth:`gspread.http_client.HTTPClient.set_serializer` for details.
+
+        Use value ``None`` to restore the default serialization behavior.
+
+        :param serializer: A callable with the same signature as ``json.dumps``,
+            or ``None`` to use the default.
+        """
+        self.http_client.set_serializer(serializer)
 
     def get_file_drive_metadata(self, id: str) -> Any:
         """Get the metadata from the Drive API for a specific file

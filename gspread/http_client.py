@@ -12,6 +12,7 @@ from http import HTTPStatus
 from typing import (
     IO,
     Any,
+    Callable,
     Dict,
     List,
     Mapping,
@@ -44,6 +45,7 @@ from .urls import (
 from .utils import ExportFormat, convert_credentials, quote
 
 ParamsType = MutableMapping[str, Optional[Union[str, int, bool, float, List[str]]]]
+SerializerType = Optional[Callable[[Mapping[str, Any]], Union[str, bytes]]]
 
 FileType = Optional[
     Union[
@@ -83,6 +85,7 @@ class HTTPClient:
             self.session = AuthorizedSession(self.auth)
 
         self.timeout: Optional[Union[float, Tuple[float, float]]] = None
+        self.serializer: SerializerType = None
 
     def login(self) -> None:
         from google.auth.transport.requests import Request
@@ -102,16 +105,45 @@ class HTTPClient:
         """
         self.timeout = timeout
 
+    def set_serializer(self, serializer: SerializerType) -> None:
+        """Set a custom JSON serializer used to encode request bodies.
+
+        The serializer is a callable that takes the request body (a mapping)
+        and returns its JSON-encoded form as ``str`` or ``bytes``. It is
+        applied to every request that sends a JSON body, which is useful for
+        handling types the standard library ``json`` module cannot serialize
+        by default (e.g. ``datetime`` or ``Decimal``).
+
+        Use value ``None`` to restore the default serialization behavior.
+
+        :param serializer: A callable with the same signature as
+            ``json.dumps`` (e.g. ``functools.partial(json.dumps, default=...)``),
+            or ``None`` to use the default.
+
+        Example::
+
+            import json
+
+            client.set_serializer(
+                lambda body: json.dumps(body, default=str)
+            )
+        """
+        self.serializer = serializer
+
     def request(
         self,
         method: str,
         endpoint: str,
         params: Optional[ParamsType] = None,
-        data: Optional[bytes] = None,
+        data: Optional[Union[str, bytes]] = None,
         json: Optional[Mapping[str, Any]] = None,
         files: FileType = None,
         headers: Optional[MutableMapping[str, str]] = None,
     ) -> Response:
+        if self.serializer is not None and json is not None:
+            data = self.serializer(dict(json))
+            json = None
+            headers = {**(headers or {}), "Content-Type": "application/json"}
         response = self.session.request(
             method=method,
             url=endpoint,
